@@ -21,6 +21,16 @@ Open:
 http://localhost:4180
 ```
 
+## Deploy on Railway
+
+1. Push this repository to GitHub.
+2. In Railway, choose **New Project** → **Deploy from GitHub repo**.
+3. Select `akshay23khanna/netflix-analysis`.
+4. Railway will use `railway.json` and run `npm start`.
+5. Open the generated Railway domain after the deployment turns healthy.
+
+No environment variables are required. Railway provides `PORT` automatically.
+
 ## API
 
 - `GET /api/kpis`

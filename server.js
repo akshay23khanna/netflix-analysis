@@ -6,6 +6,7 @@ const root = __dirname;
 const dataDir = path.join(root, "data");
 const publicDir = path.join(root, "public");
 const port = process.env.PORT || 4180;
+const host = process.env.HOST || "0.0.0.0";
 
 const typeMap = {
   ".html": "text/html; charset=utf-8",
@@ -89,12 +90,16 @@ function serveStatic(req, res) {
   const requestPath = decodeURIComponent(req.url.split("?")[0]);
   const safePath = path.normalize(requestPath).replace(/^(\.\.[/\\])+/, "");
   const relative = safePath === "/" || safePath === "\\" ? "index.html" : safePath.replace(/^[/\\]/, "");
-  const filePath = path.join(publicDir, relative);
+  let filePath = path.join(publicDir, relative);
 
   if (!filePath.startsWith(publicDir)) {
     res.writeHead(403);
     res.end("Forbidden");
     return;
+  }
+
+  if (!fs.existsSync(filePath) && !path.extname(filePath)) {
+    filePath = path.join(publicDir, "index.html");
   }
 
   fs.readFile(filePath, (error, content) => {
@@ -113,6 +118,10 @@ function serveStatic(req, res) {
 
 const server = http.createServer((req, res) => {
   const pathname = new URL(req.url, `http://${req.headers.host}`).pathname;
+  if (pathname === "/healthz") {
+    sendJson(res, { ok: true, service: "netflix-analysis" });
+    return;
+  }
   if (endpoints[pathname]) {
     try {
       sendJson(res, endpoints[pathname]());
@@ -125,6 +134,6 @@ const server = http.createServer((req, res) => {
   serveStatic(req, res);
 });
 
-server.listen(port, () => {
-  console.log(`Netflix analysis dashboard running at http://localhost:${port}`);
+server.listen(port, host, () => {
+  console.log(`Netflix analysis dashboard running on ${host}:${port}`);
 });
