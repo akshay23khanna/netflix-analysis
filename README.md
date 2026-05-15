@@ -21,6 +21,14 @@ Open:
 http://localhost:4180
 ```
 
+On Windows, you can also double-click:
+
+```text
+open-local.cmd
+```
+
+That starts the backend server and opens the frontend in your browser. Keep the server window open while viewing the site.
+
 ## Deploy on Railway
 
 1. Push this repository to GitHub.
