@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Netflix Analysis | Catalogue Intelligence</title>
+    <meta
+      name="description"
+      content="Netflix catalogue analytics dashboard with trend, behaviour, recommendation, and strategy insights."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Netflix analysis home">
+        <span class="brand-mark">N</span>
+        <span>Netflix Analysis</span>
+      </a>
+      <div class="nav-links" aria-label="Page sections">
+        <a href="#catalogue">Catalogue</a>
+        <a href="#genres">Genres</a>
+        <a href="#behavior">Behavior</a>
+        <a href="#model">Model</a>
+        <a href="#insights">Insights</a>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Streaming Analytics Portfolio</p>
+          <h1>Netflix catalogue intelligence, built for decisions.</h1>
+          <p class="lede">
+            A full-stack analysis website that explores catalogue composition, growth,
+            genre shifts, viewer behaviour, and recommendation baselines from 8,807 titles.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#insights">View insights</a>
+            <a class="button ghost" href="/api/analysis/summary" target="_blank">Open API summary</a>
+          </div>
+        </div>
+        <aside class="terminal-panel" aria-label="Project summary">
+          <div class="terminal-top">
+            <span></span><span></span><span></span>
+            <p>analysis.run</p>
+          </div>
+          <div class="terminal-grid" id="kpiGrid"></div>
+        </aside>
+      </section>
+
+      <section class="section" id="catalogue">
+        <div class="section-head">
+          <p class="eyebrow">01 · Catalogue</p>
+          <h2>What Netflix has, who it serves, and where the volume comes from.</h2>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel">
+            <div class="panel-title">
+              <span>Fig 1.1</span>
+              <h3>Movies vs TV Shows</h3>
+            </div>
+            <div id="contentChart" class="donut-wrap"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <span>Fig 1.2</span>
+              <h3>Rating Distribution</h3>
+            </div>
+            <div id="ratingsChart" class="bar-chart"></div>
+          </article>
+          <article class="panel wide">
+            <div class="panel-title">
+              <span>Fig 1.3</span>
+              <h3>Titles Added Per Year</h3>
+            </div>
+            <div id="releaseChart" class="line-chart"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <span>Fig 1.4</span>
+              <h3>Top Producing Countries</h3>
+            </div>
+            <div id="countryList" class="rank-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split" id="genres">
+        <div class="section-head">
+          <p class="eyebrow">02 · Genre Trends</p>
+          <h2>Drama stays dominant while documentaries become the fastest climber.</h2>
+        </div>
+        <article class="panel">
+          <div class="panel-title">
+            <span>2014-2021</span>
+            <h3>Genre Share Over Time</h3>
+          </div>
+          <div id="genreChart" class="stack-chart"></div>
+        </article>
+        <div class="insight-strip">
+          <div>
+            <span>Fastest growth</span>
+            <strong>Documentary</strong>
+            <p>6% to 15% share across the period.</p>
+          </div>
+          <div>
+            <span>Catalogue anchor</span>
+            <strong>Drama</strong>
+            <p>Remains the largest genre every year.</p>
+          </div>
+          <div>
+            <span>Softening segment</span>
+            <strong>Romance</strong>
+            <p>Falls from 9% to 3% of new titles.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="behavior">
+        <div class="section-head">
+          <p class="eyebrow">03 · Behaviour</p>
+          <h2>Viewing rhythm points to prime-time habits and runtime sensitivity.</h2>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel wide">
+            <div class="panel-title">
+              <span>Fig 3.1</span>
+              <h3>Peak Watch Hours</h3>
+            </div>
+            <div id="heatmap" class="heatmap"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <span>Fig 3.2</span>
+              <h3>Device Mix</h3>
+            </div>
+            <div id="deviceChart" class="bar-chart"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <span>Fig 3.3</span>
+              <h3>Runtime Retention</h3>
+            </div>
+            <div id="retentionChart" class="line-chart compact"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="model">
+        <div class="section-head">
+          <p class="eyebrow">04 · Recommendation Model</p>
+          <h2>Explainable recommendations and popularity prediction for the portfolio case.</h2>
+        </div>
+        <div class="model-grid">
+          <article class="panel">
+            <div class="panel-title">
+              <span>Similarity</span>
+              <h3>Closest Titles to Stranger Things</h3>
+            </div>
+            <div id="similarityList" class="score-list"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <span>Regression</span>
+              <h3>Predicted vs Actual Popularity</h3>
+            </div>
+            <div id="predictionChart" class="scatter-chart"></div>
+          </article>
+          <article class="panel strategy">
+            <div class="panel-title">
+              <span>API-driven</span>
+              <h3>Model Narrative</h3>
+            </div>
+            <div id="modelNotes"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section final" id="insights">
+        <div class="section-head">
+          <p class="eyebrow">05 · Executive Insights</p>
+          <h2>Three decisions a content leader can make from the analysis.</h2>
+        </div>
+        <div id="insightCards" class="insight-cards"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <strong>Netflix Analysis</strong>
+      <span>Full-stack data analytics portfolio project by Akshay Khanna.</span>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
