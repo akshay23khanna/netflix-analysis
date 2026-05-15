@@ -17,6 +17,7 @@
         <span>Netflix Analysis</span>
       </a>
       <div class="nav-links" aria-label="Page sections">
+        <a href="#system">How it works</a>
         <a href="#catalogue">Catalogue</a>
         <a href="#genres">Genres</a>
         <a href="#behavior">Behavior</a>
@@ -46,6 +47,52 @@
           </div>
           <div class="terminal-grid" id="kpiGrid"></div>
         </aside>
+      </section>
+
+      <section class="section system-section" id="system">
+        <div class="section-head">
+          <p class="eyebrow">System Walkthrough</p>
+          <h2>Frontend, backend, and analysis are all running in one deployable app.</h2>
+        </div>
+        <div class="system-grid">
+          <article class="system-card">
+            <span class="system-number">01</span>
+            <h3>Backend API</h3>
+            <p>
+              Node.js serves the dashboard and exposes JSON endpoints for KPIs,
+              catalogue charts, genre trends, behaviour, recommendations, and summary insights.
+            </p>
+            <code>GET /api/analysis/summary</code>
+          </article>
+          <article class="system-card">
+            <span class="system-number">02</span>
+            <h3>Frontend Dashboard</h3>
+            <p>
+              The browser fetches the API data and renders responsive charts,
+              scorecards, heatmaps, model output, and executive insight cards.
+            </p>
+            <code>public/app.js + public/styles.css</code>
+          </article>
+          <article class="system-card">
+            <span class="system-number">03</span>
+            <h3>Analysis Layer</h3>
+            <p>
+              Saved Netflix analysis data powers the story: title mix, yearly
+              growth, country contribution, genre shifts, retention, and similarity scores.
+            </p>
+            <code>data/*.json</code>
+          </article>
+        </div>
+        <div class="api-console">
+          <div class="console-heading">
+            <div>
+              <p class="eyebrow">Live Backend Check</p>
+              <h3>API response preview</h3>
+            </div>
+            <span id="apiStatus">Checking...</span>
+          </div>
+          <pre id="apiPreview">Loading /api/analysis/summary...</pre>
+        </div>
       </section>
 
       <section class="section" id="catalogue">

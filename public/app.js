@@ -168,6 +168,24 @@ function renderInsights(data) {
     .join("");
 }
 
+function renderApiPreview(summary) {
+  const status = document.getElementById("apiStatus");
+  const preview = document.getElementById("apiPreview");
+  status.textContent = "Connected";
+  status.classList.remove("error");
+  preview.textContent = JSON.stringify(
+    {
+      endpoint: "/api/analysis/summary",
+      backend: "Node.js HTTP server",
+      frontend: "Static dashboard fetching live JSON",
+      analysisHeadline: summary.headline,
+      recommendedActions: summary.recommendedActions
+    },
+    null,
+    2
+  );
+}
+
 async function init() {
   const [kpis, content, ratings, releases, countries, genres, peakHours, devices, retention, similarity, prediction, insights, summary] =
     await Promise.all([
@@ -199,8 +217,16 @@ async function init() {
   renderScatter(prediction);
   renderNotes(summary);
   renderInsights(insights);
+  renderApiPreview(summary);
 }
 
 init().catch((error) => {
+  const status = document.getElementById("apiStatus");
+  const preview = document.getElementById("apiPreview");
+  if (status) {
+    status.textContent = "Disconnected";
+    status.classList.add("error");
+  }
+  if (preview) preview.textContent = error.message;
   document.body.prepend(el("div", "load-error", `Unable to load dashboard data: ${error.message}`));
 });

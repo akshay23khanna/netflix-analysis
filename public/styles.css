@@ -238,6 +238,10 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.system-section {
+  background: #fff8eb;
+}
+
 .section-head {
   margin-bottom: 36px;
 }
@@ -268,6 +272,94 @@ h3 {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 24px;
+}
+
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.system-card {
+  min-height: 280px;
+  padding: 28px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+}
+
+.system-number {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 28px;
+  background: var(--red);
+  color: white;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 900;
+}
+
+.system-card p {
+  color: #443d38;
+  line-height: 1.7;
+}
+
+.system-card code {
+  display: block;
+  margin-top: 22px;
+  padding: 12px;
+  overflow-wrap: anywhere;
+  background: var(--coal);
+  color: white;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.84rem;
+}
+
+.api-console {
+  margin-top: 28px;
+  background: var(--coal);
+  color: white;
+  border: 1px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--red);
+}
+
+.console-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.console-heading h3 {
+  margin: 0;
+}
+
+#apiStatus {
+  padding: 8px 12px;
+  background: var(--green);
+  color: white;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+#apiStatus.error {
+  background: var(--red);
+}
+
+#apiPreview {
+  margin: 0;
+  max-height: 340px;
+  overflow: auto;
+  padding: 24px;
+  color: #f2ede5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
 }
 
 .donut-wrap,
@@ -503,6 +595,7 @@ h3 {
   .hero,
   .dashboard-grid,
   .model-grid,
+  .system-grid,
   .insight-strip,
   .insight-cards {
     grid-template-columns: 1fr;
