@@ -5,7 +5,7 @@ const path = require("path");
 const root = __dirname;
 const dataDir = path.join(root, "data");
 const publicDir = path.join(root, "public");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4180;
 
 const typeMap = {
   ".html": "text/html; charset=utf-8",
